@@ -14,6 +14,7 @@ import LoginView from '../views/LoginView'
 import RegisterView from '../views/RegisterView'
 //添加
 import MusicView from '../views/MusicView'
+import RatingView from '../views/RatingView'
 
 Vue.use(Router)
 
@@ -94,6 +95,12 @@ export default new Router({
       path: '/register',
       name: 'RegisterView',
       component: RegisterView
+    },
+    //add
+    {
+    	path:'/rating',
+    	name:'RatingView',
+    	component:RatingView
     },
     {
       path: '*',

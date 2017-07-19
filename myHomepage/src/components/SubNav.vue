@@ -12,8 +12,8 @@
         </template>
       </div>
       <div class="nav-item">
-        <a href="https://movie.douban.com/">使用桌面版</a><!-- replace blank
-        --><a href="#">使用豆瓣App</a>
+        <!--<a href="#">使用桌面版</a><a href="#">使用豆瓣App</a>-->
+        <router-link :to="{name: 'RatingView'}" replace>评论豆瓣</router-link><router-link :to="{name: 'LoginView'}" replace>使用桌面版</router-link>
       </div>
     </div>
     <!-- Quick start nav -->
