@@ -2,7 +2,7 @@
   "name": "douban",
   "version": "1.0.0",
   "description": "豆瓣",
-  "author": "jeneser",
+  "author": "lanleilin",
   "private": false,
   "scripts": {
     "dev": "node build/dev-server.js",
