@@ -5,9 +5,9 @@
 			<li>
 				<input type="text" name="" id="" value="" placeholder="电影名称" v-model="title" />
 			</li>
-			<!--<li>
-				<input type="text" name="" id="" value="" placeholder="评分" />
-			</li>-->
+			<li>
+				<input type="text" name="" id="" value="" placeholder="评分"  v-model="rating"/>
+			</li>
 			<li>
 				<input type="text" name="" id="" value="" placeholder="海报地址" v-model="poster"/>
 			</li>
@@ -26,9 +26,9 @@
 			<li>
 				<h3>{{ movie.title }}</h3>
 			</li>
-			<!--<li>
-				{{ movie.rating }}
-			</li>-->
+			<li>
+				评分为{{ movie.rating }}
+			</li>
 			<li>
 				<img class="movie-poster" :src="movie.poster">
 			</li>
@@ -84,7 +84,7 @@
 				openEditMovieModal(movie) {
 					this.editMovieModal = true
 					this.title = movie.title
-						//    this.rating = movie.rating
+						    this.rating = movie.rating
 					this.introduction = movie.introduction
 					this.poster = movie.poster
 					this.movie_id = movie._id
@@ -94,7 +94,7 @@
 					this.addMovieModal = false
 					this.editMovieModal = false
 					this.title = ''
-						//    this.rating = null
+						    this.rating = null
 					this.poster = ''
 					this.introduction = ''
 					this.movie_id = ''
@@ -105,7 +105,7 @@
 							title: this.title,
 							poster: this.poster,
 							introduction: this.introduction,
-							//        rating: this.rating
+							        rating: this.rating
 						})
 						.then(res => {
 //							this.toastr.success('添加电影成功')
@@ -113,7 +113,7 @@
 							console.log(res.data)
 							this.addMovieModal = false
 							this.title = ''
-								//        this.rating = null
+								        this.rating = null
 							this.poster = ''
 							this.introduction = ''
 							this.movie_id = ''
@@ -129,7 +129,7 @@
 				cancelAddMovie() {
 					this.addMovieModal = false
 					this.title = ''
-						//    this.rating = 0
+						    this.rating = 0
 					this.poster = ''
 					this.introduction = ''
 				},
@@ -140,14 +140,14 @@
 							title: this.title,
 							poster: this.poster,
 							introduction: this.introduction,
-							//        rating: this.rating,
+							        rating: this.rating,
 						})
 						.then(res => {
 							this.toastr.success("更新电影成功!")
 							this.closeModal()
 							this.getMovies()
 							this.title = ''
-								//        this.rating = null
+								        this.rating = null
 							this.poster = ''
 							this.introduction = ''
 							this.movie_id = ''

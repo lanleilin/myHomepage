@@ -52,7 +52,7 @@ router.post('/movie', (req, res) => {
 router.put('/movie/:id',(req,res) => {
   Movie.findOneAndUpdate({ _id : req.params.id}
        ,{ $set : { title: req.body.title,
-//       rating : req.body.rating,
+      rating : req.body.rating,
          poster : req.body.poster,
          introduction : req.body.introduction }
          },{
