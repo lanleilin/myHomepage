@@ -7,6 +7,10 @@ import store from './store'
 import vueScrollBehavior from 'vue-scroll-behavior'
 import 'normalize.css'
 
+//添加
+import axios from 'axios'
+Vue.prototype.$http = axios
+
 Vue.use(vueScrollBehavior, { router: router })
 
 /* eslint-disable no-new */

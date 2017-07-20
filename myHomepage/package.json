@@ -12,7 +12,12 @@
   },
   "dependencies": {
     "animate.css": "^3.5.2",
+    "axios": "^0.16.2",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "mongoose": "^4.11.3",
     "normalize.css": "^5.0.0",
+    "serve-favicon": "^2.4.3",
     "superagent": "^3.5.2",
     "superagent-jsonp": "^0.1.1",
     "vue": "^2.1.10",
