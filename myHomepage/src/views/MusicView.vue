@@ -4,23 +4,25 @@
 		<!--<p @click='fade'>world</p>-->
 		<!--video begins-->
 		<div class="wrap">
-			<video id="myVideo" width="350" height="250">
+			<!--<video id="myVideo" width="350" height="250">-->
+			<video id="myVideo">
 				<source src="./static/myVideo/sugar.mp4" type="video/mp4"></source>
 			</video>
+			<!--<p v-show=true>exit</p>-->
 			<!--<audio id="summervibe" src="./static/myMusic/summervibe.mp3" controls="controls"></audio>-->
 		</div>
 		<!--video ends-->
 		<div class="wrap">
-		<!--panel begins-->
-		<div class="m-panel" id="m-panel">
-			<ul v-for="value in datalist">
-				<li>
-					<p class="videoLi"> {{value.name}}</p><span class="m-del"></span></li>
-			</ul>
-			<span class="panel-botton" @click="exitPanel" id="exitPanel">退出</span> 
-			<span class="panel-botton" @click="clearVideo" id="clearPanel">清空列表</span>
-		</div>
-		<!--panel ends-->
+			<!--panel begins-->
+			<div class="m-panel" id="m-panel">
+				<ul v-for="value in datalist">
+					<li>
+						<p class="videoLi"> {{value.name}}</p><span class="m-del"></span></li>
+				</ul>
+				<span class="panel-botton" @click="exitPanel" id="exitPanel">退出</span>
+				<span class="panel-botton" @click="clearVideo" id="clearPanel">清空列表</span>
+			</div>
+			<!--panel ends-->
 		</div>
 		<div class="mask">
 
@@ -110,6 +112,11 @@
 			// Dispatching getGroup on created
 			this.$store.dispatch('getGroup')
 		},
+		mounted: function() {
+			let myVideo = document.getElementById('myVideo')
+			myVideo.width = 350
+			myVideo.height = 250
+		},
 		methods: {
 			playMusic: function() {
 				let myVideo = document.getElementById('myVideo');
@@ -121,7 +128,7 @@
 				} else {
 					startIcon.src = '/static/icon/icon-ctrl-start.png'
 				}
-				myVideo.controls='';
+				myVideo.controls = '';
 
 			},
 			nextVideo: function() {
@@ -186,7 +193,6 @@
 				let mask = document.getElementsByClassName('mask')[0];
 				mask.style.display = 'block';
 				mask.className = "mask animated bounceInUp";
-//				mPanel.style.left=0+'px';
 				mPanel.style.display = 'block';
 				mPanel.className = "m-panel animated fadeIn"
 
@@ -195,7 +201,6 @@
 				let myVideo = document.getElementById('myVideo');
 				let mDel = document.getElementsByClassName('m-del');
 				let _this = this;
-				//				console.log(_this.datalist.length);
 				//切换视频 根据相应index播放相应视频
 				for(let i = 0; i < _this.datalist.length; i++) {
 					videoLi[i].addEventListener('click', function() {
@@ -218,20 +223,30 @@
 			},
 			exitPanel: function() {
 				let mPanel = document.getElementById('m-panel');
-//				mPanel.style.display='none'
-//				mPanel.style.left=-9999+'px';
 				mPanel.className = "m-panel animated zoomOut";
 				let mask = document.getElementsByClassName('mask')[0];
-//				mask.style.display = 'none';
-				mask.className='mask animated fadeOut'
+				mask.className = 'mask animated fadeOut'
 			},
 			fade: function() {
-//				alert('success');
 				let startIcon = document.getElementById('start-icon');
 				startIcon.src = '/static/icon/icon-ctrl-stop.png';
 				let myVideo = document.getElementById('myVideo');
-				myVideo.controls='auto';
-				myVideo.pause();
+				myVideo.controls = 'auto';
+
+				let w = document.documentElement.clientWidth || document.body.clientWidth;
+				let h = document.documentElement.clientHeight || document.body.clientHeigth;
+				let cha = Math.abs(h - w) / 2;
+				myVideo.width = h;
+				myVideo.height = w;
+				myVideo.style.zIndex = 2000;
+				myVideo.style.top = 0
+				myVideo.style.transform = 'translate(-' + cha + 'px,' + cha + 'px) rotate(90deg)';
+
+			},
+			defaultVideo: function() {
+				let myVideo = document.getElementById('myVideo');
+				myVideo.width = 350;
+				myVideo.height = 250;
 			}
 
 		}
@@ -239,13 +254,8 @@
 </script>
 
 <style lang="scss" scoped>
-	* {
-		/*font-size: 62.5%;*/
-	}
-	
 	#hello {
 		color: #00B600;
-		/*color:#007722 ;*/
 		display: none;
 	}
 	
@@ -272,45 +282,46 @@
 	.m-panel {
 		display: none;
 		height: 20rem;
-		/*background: lightslategray;*/
 		position: absolute;
 		bottom: 7rem;
 		z-index: 1080;
 		width: 100%;
-		/*left: -9999px;*/
 	}
 	
 	.m-panel>ul>li {
 		width: 100%;
-		/*background: lightcoral;*/
 		margin-top: 5px;
 		font-size: 1.8rem;
 		padding-left: 1.2rem;
-		/*color: #403d3b;*/
 		color: white;
 		width: 25.4rem;
 		height: 3rem;
 		line-height: 3rem;
 		border-bottom: 1px solid #ededed;
 	}
+	
 	.videoLi {
 		display: inline-block;
 		margin: 0;
 		padding: 0;
 	}
-	.panel-botton{
+	
+	.panel-botton {
 		float: right;
 		position: absolute;
 		bottom: 0px;
 		color: white;
 		margin: 5px;
 	}
-	#clearPanel{
+	
+	#clearPanel {
 		right: 20px;
 	}
-	#exitPanel{
+	
+	#exitPanel {
 		right: 100px;
 	}
+	
 	.m-del {
 		background: url(../assets/img/del.svg) center;
 		position: absolute;
@@ -325,10 +336,11 @@
 	}
 	/*panel ends*/
 	/*mask*/
+	
 	.mask {
 		width: 100%;
 		height: 100%;
-		background: rgba(21,21,22,0.4);
+		background: rgba(21, 21, 22, 0.4);
 		position: absolute;
 		top: 0;
 		z-index: 990;
@@ -361,5 +373,10 @@
 	.m-control img {
 		width: 100%;
 		height: 100%;
+	}
+	/*myVideo*/
+	
+	#myVideo {
+		position: absolute;
 	}
 </style>
