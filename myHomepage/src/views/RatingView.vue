@@ -6,10 +6,20 @@
 				<input type="text" name="" id="" value="" placeholder="电影名称" v-model="title" />
 			</li>
 			<li>
-				<input type="text" name="" id="" value="" placeholder="评分"  v-model="rating"/>
+				<input type="text" name="" id="" value="" placeholder="评分" v-model="rating" />
 			</li>
 			<li>
-				<input type="text" name="" id="" value="" placeholder="海报地址" v-model="poster"/>
+				<ul class="star">
+					<!--<li class="starItem" id="first">2</li>
+					<li class="starItem" @click='light'>4</li>
+					<li class="starItem">6</li>
+					<li class="starItem">8</li>
+					<li class="starItem">10</li>-->
+					<li class="starItem" v-for="star in stars"></li>
+				</ul>
+			</li>
+			<li>
+				<input type="text" name="" id="" value="" placeholder="海报地址" v-model="poster" />
 			</li>
 			<li>
 				<textarea name="" rows="" cols="" placeholder="简介" v-model="introduction"></textarea>
@@ -35,20 +45,50 @@
 			<li>
 				<p class="movie-introduction">{{ movie.introduction }}</p>
 			</li>
-						<li>
+			<li>
 				<p @click="removeMovie(movie)">删除</p>
 			</li>
 		</ul>
 		<!--ul end-->
-<p v-show="movies.length==0">暂无电影</p>
+		<p v-show="movies.length==0">暂无电影</p>
 	</div>
 </template>
 
 <script>
+//	function rating() {
+//		let star = document.getElementsByClassName('star')[0];
+//		let starLi = document.getElementsByClassName('starItem')
+//		let first=document.getElementById('first');
+//		
+//		console.log(Array.isArray(starLi))
+//		
+//		let index = 0;
+//		first.addEventListener('click',function(){
+//			alert('success');
+//		})
+//		for(let i = 0; i <starLi.length; i++) {
+//			console.log(98)
+//			starLi[i].addEventListener('click', function() {
+//				index = i;
+//				console.log(index);
+//				for(let j = 0; j <=index; j++) {
+//					starLi[j].style.background = 'url(/static/homeIcon/starYellow.svg) no-repeat center';
+//					starLi[j].style.backgroundSize = '80%';
+//				}
+//				for(let n =index + 1; n < starLi.length; n++) {
+//					starLi[n].style.background = 'url(/static/homeIcon/starGrey.svg) no-repeat center';
+//					starLi[n].style.backgroundSize = '80%';
+//				}
+//			})
+//		}
+
+//	}
+//		rating()
 	export default {
 		created() {
 				this.getMovies()
 				document.title = this.$route.name
+
 			},
 			components: {},
 			data() {
@@ -60,7 +100,8 @@
 					movie_id: '',
 					movies: [],
 					addMovieModal: false,
-					editMovieModal: false
+					editMovieModal: false,
+					stars:[1,2,3,4,5]
 				}
 			},
 			methods: {
@@ -84,7 +125,7 @@
 				openEditMovieModal(movie) {
 					this.editMovieModal = true
 					this.title = movie.title
-						    this.rating = movie.rating
+					this.rating = movie.rating
 					this.introduction = movie.introduction
 					this.poster = movie.poster
 					this.movie_id = movie._id
@@ -94,7 +135,7 @@
 					this.addMovieModal = false
 					this.editMovieModal = false
 					this.title = ''
-						    this.rating = null
+					this.rating = null
 					this.poster = ''
 					this.introduction = ''
 					this.movie_id = ''
@@ -105,22 +146,22 @@
 							title: this.title,
 							poster: this.poster,
 							introduction: this.introduction,
-							        rating: this.rating
+							rating: this.rating
 						})
 						.then(res => {
-//							this.toastr.success('添加电影成功')
+							//							this.toastr.success('添加电影成功')
 							console.log('添加电影成功')
 							console.log(res.data)
 							this.addMovieModal = false
 							this.title = ''
-								        this.rating = null
+							this.rating = null
 							this.poster = ''
 							this.introduction = ''
 							this.movie_id = ''
 							this.getMovies()
 						})
 						.catch(e => {
-//							this.toastr.warn('保存失败!')
+							//							this.toastr.warn('保存失败!')
 							console.log('保存失败')
 							console.log(e)
 						})
@@ -129,7 +170,7 @@
 				cancelAddMovie() {
 					this.addMovieModal = false
 					this.title = ''
-						    this.rating = 0
+					this.rating = 0
 					this.poster = ''
 					this.introduction = ''
 				},
@@ -140,14 +181,14 @@
 							title: this.title,
 							poster: this.poster,
 							introduction: this.introduction,
-							        rating: this.rating,
+							rating: this.rating,
 						})
 						.then(res => {
 							this.toastr.success("更新电影成功!")
 							this.closeModal()
 							this.getMovies()
 							this.title = ''
-								        this.rating = null
+							this.rating = null
 							this.poster = ''
 							this.introduction = ''
 							this.movie_id = ''
@@ -159,7 +200,7 @@
 					let id = movie._id
 					this.$http.delete(`/api/movie/${id}`)
 						.then(res => {
-//							this.toastr.success("删除成功.")
+							//							this.toastr.success("删除成功.")
 							console.log('删除成功')
 							console.log(res.data)
 							this.getMovies()
@@ -169,6 +210,10 @@
 				// 跳转到电影详情页的方法
 				showDetail(title) {
 					this.$router.push(`/movie/${title}`)
+				},
+				//点亮星星
+				light:function(){
+					alert('success');
 				}
 			}
 	}
@@ -195,5 +240,29 @@
 		font-size: 14px;
 		text-align: left;
 		text-indent: 2em;
+	}
+	/*评分*/
+	
+	.star {
+		width: 30rem;
+		height: 5.8rem;
+		margin: 0 auto;
+	}
+	
+	.star li {
+		width: 6rem;
+		height: 5.8rem;
+		float: left;
+		border: none;
+		background: url(/static/homeIcon/starGrey.svg) no-repeat center;
+		background-size: 80%;
+	}
+	
+	.starItem {
+		width: 6rem;
+		height: 5.8rem;
+		float: left;
+		background-size: 80%;
+		border: none;
 	}
 </style>

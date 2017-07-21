@@ -115,7 +115,7 @@
 				let myVideo = document.getElementById('myVideo');
 				myVideo.play()
 				let startIcon = document.getElementById('start-icon');
-				if(startIcon.src == 'http://localhost:8085/static/icon/icon-ctrl-start.png') {
+				if(startIcon.src == 'http://localhost:8080/static/icon/icon-ctrl-start.png') {
 					startIcon.src = '/static/icon/icon-ctrl-stop.png'
 					myVideo.pause()
 				} else {
@@ -230,7 +230,7 @@
 				let startIcon = document.getElementById('start-icon');
 				startIcon.src = '/static/icon/icon-ctrl-stop.png';
 				let myVideo = document.getElementById('myVideo');
-				myVideo.controls='controls';
+				myVideo.controls='auto';
 				myVideo.pause();
 			}
 
