@@ -28,7 +28,7 @@
 		<!--<download-app></download-app>-->
 		<!--<p @click="addMovie">添加</p>-->
 		<router-link :to="{ name: 'MusicView'}">
-			<p>返回</p>
+			<p class="ratingShowStyle">返回</p>
 		</router-link>
 		<ul id="ratingIpt" v-for="movie of movies">
 			<li>
@@ -48,40 +48,12 @@
 			</li>
 		</ul>
 		<!--ul end-->
-		<p v-show="movies.length==0">暂无电影</p>
+		<p class="ratingShowStyle" v-show="movies.length==0">暂无电影</p>
 	</div>
 </template>
 
 <script>
-//	function rating() {
-//		let star = document.getElementsByClassName('star')[0];
-//		let starLi = document.getElementsByClassName('starItem')
-//		let first=document.getElementById('first');
-//		
-//		console.log(Array.isArray(starLi))
-//		
-//		let index = 0;
-//		first.addEventListener('click',function(){
-//			alert('success');
-//		})
-//		for(let i = 0; i <starLi.length; i++) {
-//			console.log(98)
-//			starLi[i].addEventListener('click', function() {
-//				index = i;
-//				console.log(index);
-//				for(let j = 0; j <=index; j++) {
-//					starLi[j].style.background = 'url(/static/homeIcon/starYellow.svg) no-repeat center';
-//					starLi[j].style.backgroundSize = '80%';
-//				}
-//				for(let n =index + 1; n < starLi.length; n++) {
-//					starLi[n].style.background = 'url(/static/homeIcon/starGrey.svg) no-repeat center';
-//					starLi[n].style.backgroundSize = '80%';
-//				}
-//			})
-//		}
 
-//	}
-//		rating()
 	export default {
 		created() {
 				this.getMovies()
@@ -264,15 +236,11 @@
 		border: none;
 	}
 	/*评分对话框*/
-	a,
-button,
-input {
-    -webkit-tap-highlight-color: rgba(255, 0, 0, 0);
-}
+
 	#ratingIpt{
 		margin-top: 3.2rem;
 		li{
-			margin-top: 1.5rem;
+			margin-top: 1rem;
 			width: 100%;
 			height: 3.2rem;
 			font-size: 2.6rem;
@@ -292,7 +260,7 @@ input {
 				outline: none;
 			}
 			p{
-				margin:2.8rem 0 0 0;
+				margin:3.8rem 0 0 0;
 				text-align: center;
 				font-size: 2.2rem;
 				background: lightgray;
@@ -302,7 +270,15 @@ input {
 				border-radius: 3.2rem;
 				border: none;
 			}
+			textarea{
+				height: auto;
+			}
 		}
+	}
+	/*暂无电影*/
+	.ratingShowStyle{
+		width: 100%;
+		text-align: center;
 	}
 
 </style>
