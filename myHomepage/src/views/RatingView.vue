@@ -1,7 +1,7 @@
 <template lang="html">
 	<div class="list">
 		<!--ul begin-->
-		<ul id="ratingIpt">
+		<ul id="ratingIpt" v-show="idx==1">
 			<li>
 				<input type="text" name="" id="" value="" placeholder="电影名称" v-model="title" />
 			</li>
@@ -27,28 +27,34 @@
 		</ul>
 		<!--<download-app></download-app>-->
 		<!--<p @click="addMovie">添加</p>-->
+		<p class="ratingShowStyle" @click="changeIdx">MARK</p>
+		
 		<router-link :to="{ name: 'MusicView'}">
 			<p class="ratingShowStyle">返回</p>
 		</router-link>
-		<ul id="ratingIpt" v-for="movie of movies">
+		<ul class="movieShowUl" v-for="movie of movies">
 			<li>
-				<h3>{{ movie.title }}</h3>
+				<h3>{{ movie.title }}  </h3>评分: {{ movie.rating }}
 			</li>
-			<li>
+			<!--<li>
 				评分为{{ movie.rating }}
-			</li>
+			</li>-->
 			<li>
 				<img class="movie-poster" :src="movie.poster">
 			</li>
 			<li>
-				<p class="movie-introduction">{{ movie.introduction }}</p>
+				<!--<h3>简介： </h3> {{ movie.introduction }}-->
+				<p class="movie-introduction"><strong>简介：</strong> {{ movie.introduction }}</p>
+				<!--<span>{{ movie.introduction }}</span>-->
 			</li>
 			<li>
-				<p @click="removeMovie(movie)">删除</p>
+				<p class="ratingDel" @click="removeMovie(movie)">删除</p>
 			</li>
 		</ul>
 		<!--ul end-->
 		<p class="ratingShowStyle" v-show="movies.length==0">暂无电影</p>
+
+		
 	</div>
 </template>
 
@@ -71,7 +77,8 @@
 					movies: [],
 					addMovieModal: false,
 					editMovieModal: false,
-					stars:[1,2,3,4,5]
+					stars:[1,2,3,4,5],
+					idx:-1
 				}
 			},
 			methods: {
@@ -181,9 +188,10 @@
 				showDetail(title) {
 					this.$router.push(`/movie/${title}`)
 				},
-				//点亮星星
-				light:function(){
-					alert('success');
+				//展示添加框
+				changeIdx:function(){
+					this.idx=this.idx*-1;
+					console.log(this.idx);
 				}
 			}
 	}
@@ -279,6 +287,52 @@
 	.ratingShowStyle{
 		width: 100%;
 		text-align: center;
+		color: #494949;
+		font-weight: bold;
+		font-size: 1.6rem;
 	}
-
+/*movie-show-ul*/
+.movieShowUl{
+		margin-top: 3.2rem;
+		border-top: 1px solid #17AA52;
+		li{
+			width: 100%;
+			text-align: left;
+			img{
+				width: 90%;
+			}
+			h3{
+				display: inline-block;
+				margin:0.4rem 10% 0.4rem 10%;
+				font-size: 1.8rem;
+				color: #17AA52;
+			}
+		}
+		li:nth-child(2){
+			text-align: center;
+		}
+		li:nth-child(3){
+			p{
+				color: #494949;
+				font-size: 1.2rem;
+				width: 90%;
+				margin: 0 auto;
+			}
+			strong{
+				color: #17AA52;
+			}
+		}
+}
+.ratingDel{
+	width: 90%;
+	text-align: center;
+	font-size: 1.8rem;
+	background: lightgray;
+	height: 3.2rem;
+	line-height: 3.2rem;
+	border-radius: 3.2rem;
+	color: white;
+	margin: 0 auto;
+	margin-bottom: 0.4rem;
+}
 </style>
