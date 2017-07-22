@@ -8,29 +8,27 @@
 			<li>
 				<input type="text" name="" id="" value="" placeholder="评分" v-model="rating" />
 			</li>
-			<li>
+			<!--<li>
 				<ul class="star">
-					<!--<li class="starItem" id="first">2</li>
-					<li class="starItem" @click='light'>4</li>
-					<li class="starItem">6</li>
-					<li class="starItem">8</li>
-					<li class="starItem">10</li>-->
+
 					<li class="starItem" v-for="star in stars"></li>
 				</ul>
-			</li>
+			</li>-->
 			<li>
 				<input type="text" name="" id="" value="" placeholder="海报地址" v-model="poster" />
 			</li>
 			<li>
 				<textarea name="" rows="" cols="" placeholder="简介" v-model="introduction"></textarea>
 			</li>
-
+			<li>
+		<p @click="addMovie">添加</p>
+				
+			</li>
 		</ul>
 		<!--<download-app></download-app>-->
-		<p @click="addMovie">添加</p>
+		<!--<p @click="addMovie">添加</p>-->
 		<router-link :to="{ name: 'MusicView'}">
-			<p>hello</p>
-			</a>
+			<p>返回</p>
 		</router-link>
 		<ul id="ratingIpt" v-for="movie of movies">
 			<li>
@@ -219,7 +217,7 @@
 	}
 </script>
 
-<style lang="css">
+<style lang="scss">
 	.mu-th {
 		text-align: center !important;
 	}
@@ -265,4 +263,46 @@
 		background-size: 80%;
 		border: none;
 	}
+	/*评分对话框*/
+	a,
+button,
+input {
+    -webkit-tap-highlight-color: rgba(255, 0, 0, 0);
+}
+	#ratingIpt{
+		margin-top: 3.2rem;
+		li{
+			margin-top: 1.5rem;
+			width: 100%;
+			height: 3.2rem;
+			font-size: 2.6rem;
+			box-shadow: none;
+			input,textarea,p{
+				margin: 0 auto;
+				width: 90%;
+				height: 3.2rem;
+				line-height: normal;
+				text-align: center;
+				color: #333333;
+				box-shadow: none;
+				border: 1px solid darkgray;
+				border-radius: 6px;
+				left: 5%;
+				position: relative;
+				outline: none;
+			}
+			p{
+				margin:2.8rem 0 0 0;
+				text-align: center;
+				font-size: 2.2rem;
+				background: lightgray;
+				color: white;
+				height: 3.2rem;
+				line-height: 3.2rem;
+				border-radius: 3.2rem;
+				border: none;
+			}
+		}
+	}
+
 </style>
