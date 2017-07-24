@@ -191,7 +191,6 @@
 				//展示添加框
 				changeIdx:function(){
 					this.idx=this.idx*-1;
-					console.log(this.idx);
 				}
 			}
 	}
@@ -294,7 +293,7 @@
 /*movie-show-ul*/
 .movieShowUl{
 		margin-top: 3.2rem;
-		border-top: 1px solid #17AA52;
+		border-top: 1px solid lightgray;
 		li{
 			width: 100%;
 			text-align: left;
@@ -333,6 +332,7 @@
 	border-radius: 3.2rem;
 	color: white;
 	margin: 0 auto;
-	margin-bottom: 0.4rem;
+	margin-bottom: 0.6rem;
+	margin-top: 0.4rem;
 }
 </style>

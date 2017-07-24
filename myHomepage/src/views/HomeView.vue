@@ -32,6 +32,7 @@ export default {
   methods: {
     // Using vue-infinite-loading
     onInfinite () {
+    	//setTimeout模拟异步请求
       setTimeout(() => {
         this.loadMore()
         this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded')

@@ -78,7 +78,7 @@
       <div class="footer">
         <div class="agreement">点击「注册」代表你已阅读并同意用户使用协议</div>
         <div class="btns">
-          <a href="#">下载豆瓣App</a>
+          <a href="javascript:" @click="clearLocalStorage">下载豆瓣App</a>
         </div>
       </div>
     </template>
@@ -138,6 +138,10 @@ export default {
         // Error handle
         this.onError(err)
       })
+    },
+    clearLocalStorage:function(){
+    	alert('success');
+    	window.localStorage.clear();
     }
   },
   // Checkout current user

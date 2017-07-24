@@ -7,13 +7,13 @@ const state = {
   travel: [],
   bookTags: [
     {
-      title: '不可饶恕的女人们',
-      href: 'https://m.douban.com/doulist/35573',
-      color: '#42BD56'
+      title: '詩歌書店',
+      href: 'https://m.douban.com/doulist/89925',
+      color: '#FFAC2D'
     },
     {
-      title: '爱欲书',
-      href: 'https://m.douban.com/doulist/38088147',
+      title: '小波看书',
+      href: 'https://m.douban.com/doulist/10372/',
       color: '#FF4055'
     },
     {
@@ -29,10 +29,11 @@ const state = {
       href: 'https://m.douban.com/doulist/192653',
       color: '#CC3344'
     },
-    {
-      title: '詩歌書店',
-      href: 'https://m.douban.com/doulist/89925',
-      color: '#FFAC2D'
+
+        {
+      title: '不可饶恕的女人们',
+      href: 'https://m.douban.com/doulist/35573',
+      color: '#42BD56'
     },
     {
       title: '尝试理解人类变化无常不可测心理相关小荐',
