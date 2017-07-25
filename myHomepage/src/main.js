@@ -9,6 +9,7 @@ import 'normalize.css'
 
 //添加
 import axios from 'axios'
+import './assets/css/base.css'
 Vue.prototype.$http = axios
 
 Vue.use(vueScrollBehavior, { router: router })
