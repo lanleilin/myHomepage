@@ -161,28 +161,28 @@
 				let startIcon = document.getElementById('start-icon');
 				switch(index) {
 					case 2:
-						myVideo.src = '/static/myVideo/shapeOfMyHeart.mp4'
-						startIcon.src = '/static/icon/icon-ctrl-start.png';
+						myVideo.src = './static/myVideo/shapeOfMyHeart.mp4'
+						startIcon.src = './static/icon/icon-ctrl-start.png';
 						myVideo.play()
 						break;
 					case 3:
-						myVideo.src = '/static/myVideo/pirate.mp4'
-						startIcon.src = '/static/icon/icon-ctrl-start.png';
+						myVideo.src = './static/myVideo/pirate.mp4'
+						startIcon.src = './static/icon/icon-ctrl-start.png';
 						myVideo.play()
 						break;
 					case 4:
-						myVideo.src = '/static/myVideo/mainTitle.mp4'
-						startIcon.src = '/static/icon/icon-ctrl-start.png';
+						myVideo.src = './static/myVideo/mainTitle.mp4'
+						startIcon.src = './static/icon/icon-ctrl-start.png';
 						myVideo.play()
 						break;
 					case 5:
-						myVideo.src = '/static/myVideo/speakSoftlyLove.mp4'
-						startIcon.src = '/static/icon/icon-ctrl-start.png';
+						myVideo.src = './static/myVideo/speakSoftlyLove.mp4'
+						startIcon.src = './static/icon/icon-ctrl-start.png';
 						myVideo.play()
 						break;
 					default:
-						myVideo.src = '/static/myVideo/sugar.mp4'
-						startIcon.src = '/static/icon/icon-ctrl-stop.png';
+						myVideo.src = './static/myVideo/sugar.mp4'
+						startIcon.src = './static/icon/icon-ctrl-stop.png';
 				}
 			},
 
