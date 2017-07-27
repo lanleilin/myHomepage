@@ -4,7 +4,7 @@
 			<p>hello</p>
 			
 			<!--crousal begin-->
-			<el-carousel :interval="4000" type="card" height="10rem">
+			<el-carousel :interval="4000" type="card" height="12rem">
 				<el-carousel-item v-for="item in 6" :key="item">
 					<h3>{{ item }}</h3>
 				</el-carousel-item>
@@ -14,6 +14,25 @@
 				<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
 				</el-option>
 			</el-select>
+			<!--img contains begins-->
+			<div class="img-containers">
+				<a class="img-items" v-for='mac in macList'>
+					<ul class="item-ul">
+						<li>
+							<img src="https://img1.doubanio.com/view/dianpu_product_item/large/public/p1971659.jpg"/>
+						</li>
+						<li>
+							macbook支架
+						</li>
+						<li>
+							￥{{mac.price}}
+						</li>
+					</ul>
+				</a>
+				
+			</div>
+			<!--img contains begins-->
+			
 		</div>
 	</div>
 </template>
@@ -62,6 +81,22 @@
 				}, {
 					value: '选项5',
 					label: '北京烤鸭'
+				}],
+				macList:[{
+					name:'macbook',
+					price:'119'
+				},{
+					name:'macbook1',
+					price:'129'
+				},{
+					name:'macbook2',
+					price:'119'
+				},{
+					name:'macbook1',
+					price:'129'
+				},{
+					name:'macbook2',
+					price:'119'
 				}],
 				value: ''
 			}
@@ -142,5 +177,26 @@
 	}
 	.el-carousel__item:nth-child(4){
 		background-image: url(http://i04.pictn.sogoucdn.com/c2416e79940074c0);
+	}
+	/*img containers*/
+	.img-containers{
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.img-items{
+		display: block;
+		margin: 0.8rem;
+		img{
+			width: 12rem;
+		}
+	}
+	.item-ul{
+		li:nth-child(2){
+			color: darkgray;
+		}
+		li:nth-child(3){
+			color: #f05f50;
+			font-weight: bold;
+		}
 	}
 </style>
