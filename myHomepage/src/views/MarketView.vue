@@ -93,6 +93,10 @@
 		width: 90%;
 		margin: 0 auto;
 	}
+	*{
+		margin: 0;
+		padding: 0;
+	}
 	/*crousal*/
 	
 	.el-carousel__item h3 {
@@ -102,15 +106,22 @@
 		line-height: 12rem;
 		margin: 0;
 	}
-	
-	.el-carousel__item:nth-child(2n) {
-		background-color: #99a9bf;
+	.el-carousel__item{
+		background: center center no-repeat;
 		background-size: cover;
+		
+	}
+	/*改变默认比例*/
+	.el-carousel__item--card {
+    width: 80%;
+    left: -16%;
+}
+	.el-carousel__item:nth-child(2n) {
+		/*background-color: #99a9bf;*/
 	}
 	
 	.el-carousel__item:nth-child(2n+1) {
-		background-color: #d3dce6;
-		background-size: cover;
+		/*background-color: #d3dce6;*/
 	}
 		.el-carousel__item:nth-child(8){
 		background-image: url(http://i02.pictn.sogoucdn.com/70b0c77917667268);
@@ -122,12 +133,14 @@
 		background-image: url(http://i02.pictn.sogoucdn.com/b1c472ca598c7800);
 	}
 	.el-carousel__item:nth-child(3){
-		background-image: url(http://i02.pictn.sogoucdn.com/9419e561a199cf27);
-	}
-	.el-carousel__item:nth-child(4){
-		background-image: url(http://i03.pictn.sogoucdn.com/dcdbf9085db6ec69);
+		background-image: url(https://img3.doubanio.com/img/files/file-1500343388-1.jpg);
+		background-size: contain;
 	}
 	.el-carousel__item:nth-child(5){
+		background-image: url(https://img3.doubanio.com/img/files/file-1499333715-0.jpg);
+		background-size: contain;
+	}
+	.el-carousel__item:nth-child(4){
 		background-image: url(http://i04.pictn.sogoucdn.com/c2416e79940074c0);
 	}
 </style>
