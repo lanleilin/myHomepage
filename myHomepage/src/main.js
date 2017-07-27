@@ -10,10 +10,12 @@ import 'normalize.css'
 //添加
 import axios from 'axios'
 import './assets/css/base.css'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-default/index.css'
 Vue.prototype.$http = axios
 
 Vue.use(vueScrollBehavior, { router: router })
-
+Vue.use(ElementUI)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

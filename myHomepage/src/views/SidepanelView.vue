@@ -68,10 +68,13 @@
             <strong style="color: rgb(89, 108, 221);">应用</strong>
             <span>玩手机</span>
           </a>
-          <a href="#" target="_blank">
+          <router-link :to="{ name: 'MarketView'}">
+          <a href="javascript" target="_blank" @click="closesidepanel">
             <strong style="color: rgb(66, 189, 86);">市集</strong>
             <span>购买原创</span>
           </a>
+        </router-link>
+          
         </div>
       </li>
     </ul>

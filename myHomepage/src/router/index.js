@@ -15,7 +15,7 @@ import RegisterView from '../views/RegisterView'
 //添加
 import MusicView from '../views/MusicView'
 import RatingView from '../views/RatingView'
-
+import MarketView from '../views/MarketView'
 Vue.use(Router)
 
 export default new Router({
@@ -62,6 +62,11 @@ export default new Router({
           path: 'music',
           name: 'MusicView',
           component: MusicView
+        },
+                {
+          path: 'market',
+          name: 'MarketView',
+          component: MarketView
         },
         {
           path: 'detail/:id',
