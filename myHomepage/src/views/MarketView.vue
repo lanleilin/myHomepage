@@ -32,6 +32,7 @@
 				
 			</div>
 			<!--img contains begins-->
+			<el-progress type="circle" :percentage="25"></el-progress>
 			
 		</div>
 	</div>
@@ -97,6 +98,9 @@
 				},{
 					name:'macbook2',
 					price:'119'
+				},{
+					name:'macbook2',
+					price:'179'
 				}],
 				value: ''
 			}
