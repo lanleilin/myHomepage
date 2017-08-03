@@ -1,6 +1,7 @@
 <template>
   <div class="group-view has-header">
     <user-bar></user-bar>
+    <p>{{test}}</p>
     <group title="租房找室友" :items="group_a">
       <a class="list-link" href="#" slot="more">更多相关小组</a>
     </group>
@@ -32,7 +33,8 @@ export default {
     ...mapState({
       group_a: state => state.group.group_a,
       group_b: state => state.group.group_b,
-      group_c: state => state.group.group_c
+      group_c: state => state.group.group_c,
+      test:state =>state.group.test
     })
   },
   created: function () {

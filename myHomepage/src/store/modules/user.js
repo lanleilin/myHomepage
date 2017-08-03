@@ -6,7 +6,8 @@ const state = {
   login_name: '',
   temp_email: '',
   temp_token: '',
-  temp_name: ''
+  temp_name: '',
+  test:124
 }
 
 const getters = {

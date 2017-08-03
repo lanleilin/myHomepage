@@ -1,7 +1,8 @@
 const state = {
   group_a: [],
   group_b: [],
-  group_c: []
+  group_c: [],
+  test:123
 }
 
 const mutations = {

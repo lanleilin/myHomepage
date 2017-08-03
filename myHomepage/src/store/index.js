@@ -8,7 +8,7 @@ import subject from './modules/subject'
 import group from './modules/group'
 import search from './modules/search'
 import user from './modules/user'
-
+import numbers from './modules/numbers'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -19,6 +19,7 @@ export default new Vuex.Store({
     subject,
     group,
     search,
-    user
+    user,
+    numbers
   }
 })

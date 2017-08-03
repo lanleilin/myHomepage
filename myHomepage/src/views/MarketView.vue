@@ -2,7 +2,7 @@
 	<div class="group-view has-header">
 		<div class="wrap">
 			<p>hello</p>
-			
+
 			<!--crousal begin-->
 			<el-carousel :interval="4000" type="card" height="12rem">
 				<el-carousel-item v-for="item in 6" :key="item">
@@ -16,7 +16,7 @@
 				<a class="img-items" v-for='mac in macList'>
 					<ul class="item-ul">
 						<li>
-							<img src="../assets/img/market/p1971659.jpg"/>
+							<img src="../assets/img/market/p1971659.jpg" />
 						</li>
 						<li>
 							macbook支架
@@ -26,12 +26,14 @@
 						</li>
 					</ul>
 				</a>
-				
+
 			</div>
 			<!--img contains begins-->
 			<el-progress type="circle" :percentage='14' id="circle"></el-progress>
-			<p>number</p>
-			<el-button type="primary" @click='add'>hello</el-button>
+			<!--<p>数字  ：{{nb}}</p>-->
+			<p>{{test}}</p>
+			<p @click='addChangeNum'>{{change}}</p>
+			<el-button type="primary" @click='addChangeNum'>hello</el-button>
 		</div>
 	</div>
 </template>
@@ -45,11 +47,9 @@
 		var a = html.style.fontSize;
 	})();
 	import animate from 'animate.css';
-
-	//	import ElementUI from 'element-ui'
-	
 	import {
-		mapState
+		mapState,
+		mapActions
 	} from 'vuex'
 	import UserBar from '../components/UserBar'
 	import Group from '../components/Group'
@@ -64,12 +64,12 @@
 		},
 		data() {
 			return {
-				macList:[{
-					name:'macbook',
-					price:'119'
-				},{
-					name:'macbook2',
-					price:'179'
+				macList: [{
+					name: 'macbook',
+					price: '119'
+				}, {
+					name: 'macbook2',
+					price: '179'
 				}],
 				value: ''
 			}
@@ -80,7 +80,9 @@
 			...mapState({
 				group_a: state => state.group.group_a,
 				group_b: state => state.group.group_b,
-				group_c: state => state.group.group_c
+				group_c: state => state.group.group_c,
+				test:state =>state.numbers.testNumber,
+				change:state =>state.numbers.changeNumber
 			})
 		},
 		created: function() {
@@ -91,10 +93,9 @@
 
 		},
 		methods: {
-			add:function(){
-				let cirle=document.getElementById('circle');
-				console.log(cirle)
-			}
+			...mapActions([
+				'addChangeNum'
+			])
 		}
 	}
 </script>
@@ -104,7 +105,8 @@
 		width: 90%;
 		margin: 0 auto;
 	}
-	*{
+	
+	* {
 		margin: 0;
 		padding: 0;
 	}
@@ -117,16 +119,18 @@
 		line-height: 12rem;
 		margin: 0;
 	}
-	.el-carousel__item{
+	
+	.el-carousel__item {
 		background: center center no-repeat;
 		background-size: cover;
-		
 	}
 	/*改变默认比例*/
+	
 	.el-carousel__item--card {
-    width: 80%;
-    left: -16%;
-}
+		width: 80%;
+		left: -16%;
+	}
+	
 	.el-carousel__item:nth-child(2n) {
 		/*background-color: #99a9bf;*/
 	}
@@ -134,43 +138,52 @@
 	.el-carousel__item:nth-child(2n+1) {
 		/*background-color: #d3dce6;*/
 	}
-		.el-carousel__item:nth-child(8){
+	
+	.el-carousel__item:nth-child(8) {
 		background-image: url(http://i02.pictn.sogoucdn.com/70b0c77917667268);
 	}
-	.el-carousel__item:nth-child(7){
+	
+	.el-carousel__item:nth-child(7) {
 		background-image: url(http://i04.pictn.sogoucdn.com/c2416e79940074c0);
 	}
-	.el-carousel__item:nth-child(6){
+	
+	.el-carousel__item:nth-child(6) {
 		background-image: url(http://i02.pictn.sogoucdn.com/b1c472ca598c7800);
 	}
-	.el-carousel__item:nth-child(3){
+	
+	.el-carousel__item:nth-child(3) {
 		background-image: url(https://img3.doubanio.com/img/files/file-1500343388-1.jpg);
 		background-size: contain;
 	}
-	.el-carousel__item:nth-child(5){
+	
+	.el-carousel__item:nth-child(5) {
 		background-image: url(https://img3.doubanio.com/img/files/file-1499333715-0.jpg);
 		background-size: contain;
 	}
-	.el-carousel__item:nth-child(4){
+	
+	.el-carousel__item:nth-child(4) {
 		background-image: url(http://i04.pictn.sogoucdn.com/c2416e79940074c0);
 	}
 	/*img containers*/
-	.img-containers{
+	
+	.img-containers {
 		display: flex;
 		flex-wrap: wrap;
 	}
-	.img-items{
+	
+	.img-items {
 		display: block;
 		margin: 0.8rem;
-		img{
+		img {
 			width: 12rem;
 		}
 	}
-	.item-ul{
-		li:nth-child(2){
+	
+	.item-ul {
+		li:nth-child(2) {
 			color: darkgray;
 		}
-		li:nth-child(3){
+		li:nth-child(3) {
 			color: #f05f50;
 			font-weight: bold;
 		}
