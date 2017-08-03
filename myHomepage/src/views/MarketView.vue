@@ -9,17 +9,14 @@
 					<h3>{{ item }}</h3>
 				</el-carousel-item>
 			</el-carousel>
-			<!--crousal begin-->
-			<el-select v-model="value" placeholder="请选择">
-				<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-				</el-option>
-			</el-select>
+			<!--crousal end-->
+
 			<!--img contains begins-->
 			<div class="img-containers">
 				<a class="img-items" v-for='mac in macList'>
 					<ul class="item-ul">
 						<li>
-							<img src="https://img1.doubanio.com/view/dianpu_product_item/large/public/p1971659.jpg"/>
+							<img src="../assets/img/market/p1971659.jpg"/>
 						</li>
 						<li>
 							macbook支架
@@ -32,8 +29,9 @@
 				
 			</div>
 			<!--img contains begins-->
-			<el-progress type="circle" :percentage="25"></el-progress>
-			
+			<el-progress type="circle" :percentage='14' id="circle"></el-progress>
+			<p>number</p>
+			<el-button type="primary" @click='add'>hello</el-button>
 		</div>
 	</div>
 </template>
@@ -46,11 +44,10 @@
 		html.style.fontSize = hWidth / 37.5 + "px";
 		var a = html.style.fontSize;
 	})();
-
 	import animate from 'animate.css';
 
 	//	import ElementUI from 'element-ui'
-
+	
 	import {
 		mapState
 	} from 'vuex'
@@ -67,36 +64,8 @@
 		},
 		data() {
 			return {
-				options: [{
-					value: '选项1',
-					label: '黄金糕'
-				}, {
-					value: '选项2',
-					label: '双皮奶'
-				}, {
-					value: '选项3',
-					label: '蚵仔煎'
-				}, {
-					value: '选项4',
-					label: '龙须面'
-				}, {
-					value: '选项5',
-					label: '北京烤鸭'
-				}],
 				macList:[{
 					name:'macbook',
-					price:'119'
-				},{
-					name:'macbook1',
-					price:'129'
-				},{
-					name:'macbook2',
-					price:'119'
-				},{
-					name:'macbook1',
-					price:'129'
-				},{
-					name:'macbook2',
 					price:'119'
 				},{
 					name:'macbook2',
@@ -122,7 +91,10 @@
 
 		},
 		methods: {
-
+			add:function(){
+				let cirle=document.getElementById('circle');
+				console.log(cirle)
+			}
 		}
 	}
 </script>
